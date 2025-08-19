@@ -53,6 +53,12 @@
     <Compile Include="Component\HeaderController.Designer.cs">
       <DependentUpon>HeaderController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Component\Pick\PickItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Component\Pick\PickItem.Designer.cs">
+      <DependentUpon>PickItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Component\Products\ProductCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -74,12 +80,15 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\ProductCard.cs" />
+    <Compile Include="Model\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Uitls\GraphicsUtil.cs" />
     <EmbeddedResource Include="Component\HeaderController.resx">
       <DependentUpon>HeaderController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Component\Pick\PickItem.resx">
+      <DependentUpon>PickItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Component\Products\ProductCard.resx">
       <DependentUpon>ProductCard.cs</DependentUpon>

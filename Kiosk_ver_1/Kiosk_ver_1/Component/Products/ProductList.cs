@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kiosk_ver_1.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -12,9 +13,10 @@ using System.Windows.Forms;
 
 namespace Kiosk_ver_1.Component.Products
 {
+    [DefaultEvent("ItemClicked")]
     public partial class ProductList : UserControl
     {
-        public event EventHandler<ProductCard> ItemClicked;
+        public event EventHandler<Product> ItemClicked;
         public ProductList()
         {
             InitializeComponent();
@@ -23,6 +25,7 @@ namespace Kiosk_ver_1.Component.Products
 
         private void Item_Collection(object sender, NotifyCollectionChangedEventArgs e)
         {
+            flpnl.Controls.Clear();
             foreach (var item in Items)
             {
                 var ProductCard = new ProductCard
@@ -33,14 +36,22 @@ namespace Kiosk_ver_1.Component.Products
                     Image = item.Image,
                 };
                 ProductCard.Clicked += ProductCard_Clicked;
+                flpnl.Controls.Add(ProductCard);
             }
         }
 
         private void ProductCard_Clicked(object sender, IProductCard e)
         {
-            throw new NotImplementedException();
-        }
+            ItemClicked?.Invoke(this, new Product
+            { 
+             ID=e.ID,
+             Title = e.Title,
+             Price = e.Price,
+             Image = e.Image,
+            });
 
-        public ObservableCollection<IProductCard> Items { get; set; } = new ObservableCollection<IProductCard>();
+        }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public ObservableCollection<Product> Items { get; set; } = new ObservableCollection<Product>();
     }
 }

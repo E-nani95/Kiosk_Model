@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Kiosk_ver_1.Model
 {
-    public class ProductCard
+    public class Product
     {
         public int ID { get; set; }
         public string Title { get; set; }
